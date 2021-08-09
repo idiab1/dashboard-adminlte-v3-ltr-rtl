@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,16 @@ use App\Http\Controllers\HomeController;
 
 Route::prefix('admin')->middleware('is_admin')->group(function () {
 
-  // -> Route for admin page home
-  Route::get('home', [HomeController::class, 'adminHome'])->name('admin.home');
+    // -> Route for admin page home
+    Route::get('/home', [HomeController::class, 'adminHome'])->name('admin.home');
+
+    // -> Route for setting
+    Route::resource('setting', SettingController::class)->only([
+        'edit', 'update',
+    ])->parameters([
+        'setting' => 'id'
+    ])->names([
+        'edit'      => 'setting.edit',
+        'update'    => 'setting.update',
+    ]);
 });

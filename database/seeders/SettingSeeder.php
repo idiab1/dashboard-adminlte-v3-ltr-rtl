@@ -16,7 +16,7 @@ class SettingSeeder extends Seeder
     {
         Setting::create([
             'web_name' => 'Web Name',
-            'phone_number' => '+123456789',
+            'phone_number' => +123456789,
             'web_email' => 'web@app.com',
             'address' => 'Egypt',
         ]);

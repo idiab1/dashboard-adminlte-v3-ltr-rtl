@@ -9,7 +9,7 @@
             <a class="nav-link" href="{{route('admin.home')}}">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" href="#">Setting</a>
+            <a class="nav-link" href="{{route('setting.edit', ['id' => $setting->id])}}">Setting</a>
         </li>
     </ul>
 

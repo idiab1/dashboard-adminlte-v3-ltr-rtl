@@ -23,11 +23,11 @@ Route::prefix('admin')->middleware('is_admin')->group(function () {
 
     // -> Route for setting
     Route::resource('setting', SettingController::class)->only([
-        'edit', 'update',
+        'index', 'update',
     ])->parameters([
         'setting' => 'id'
     ])->names([
-        'edit'      => 'setting.edit',
+        'index'      => 'setting.index',
         'update'    => 'setting.update',
     ]);
 });

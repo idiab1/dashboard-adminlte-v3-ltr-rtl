@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -29,6 +30,7 @@ class HomeController extends Controller
     // Show the admin Home
     public function adminHome()
     {
-        return view('admin.adminHome');
+        $setting = Setting::where('id', 1)->first(['id']);
+        return view('admin.adminHome', compact('setting'));
     }
 }

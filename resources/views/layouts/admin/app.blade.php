@@ -51,11 +51,9 @@
     </div>
     <!-- /.content-wrapper -->
 
-    <!-- Footer -->
-    <footer class="main-footer">
-        <strong>Copyright &copy; 2020-2021 <a href="{{route('admin.home')}}">AdminLTE.io</a>.</strong> All rights reserved.
-    </footer>
-    <!-- End of footer -->
+    {{-- Footer --}}
+    @include('admin.include.footer', ['setting' => \App\Models\Setting::where('id', 1)->first(['web_name'])])
+
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">

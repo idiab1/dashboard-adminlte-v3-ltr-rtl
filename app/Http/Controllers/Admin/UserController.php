@@ -85,4 +85,27 @@ class UserController extends Controller
         $user->delete();
         return redirect()->back();
     }
+
+    public function makeAdmin(Request $request, $id)
+    {
+        // dd($request);
+        $user = User::find($id);
+        if ($user->is_admin == 0) {
+            $user->update([
+                'is_admin' => 1
+            ]);
+        }
+        return redirect()->back();
+    }
+    public function removeAdmin(Request $request, $id)
+    {
+        // dd($request);
+        $user = User::find($id);
+        if ($user->is_admin == 1) {
+            $user->update([
+                'is_admin' => 0
+            ]);
+        }
+        return redirect()->back();
+    }
 }

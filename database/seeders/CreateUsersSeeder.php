@@ -20,13 +20,15 @@ class CreateUsersSeeder extends Seeder
                 'name' => 'Admin',
                 'email' => 'admin@test.com',
                 'is_admin' => '1',
-                'password' => Hash::make('123456789')
+                'password' => Hash::make('123456789'),
+                'avatar' => 'avatar.png'
             ],
             [
                 'name' => 'user',
                 'email' => 'user@test.com',
                 'is_admin' => '0',
-                'password' => Hash::make('123456789')
+                'password' => Hash::make('123456789'),
+                'avatar' => 'avatar.png'
             ],
         ];
         foreach ($user as $key => $value) {

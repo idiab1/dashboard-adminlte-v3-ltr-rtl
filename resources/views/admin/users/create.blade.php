@@ -31,9 +31,17 @@
                     </div>
                     <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('user.store')}}" method="POST">
+                        <form action="{{route('user.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
+
+                                <div class="form-group">
+                                    <div class="image-preview text-center mb-3">
+                                        <img class="img-circle preview border border-dark" width="60px" src="{{asset('uploads/users/avatar.png')}}" alt="User Image">
+                                    </div>
+                                    <input class="form-control avatar" type="file" id="avatar" name="avatar">
+                                </div>
+
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input class="form-control" type="text" id="name" name="name" placeholder="Enter name of user">
@@ -65,4 +73,28 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function(){
+
+        // Image Preview
+        $('.avatar').change(function(){
+            if(this.files && this.files[0]){
+
+                let reader = new FileReader();
+
+                reader.onload = function(e){
+
+                    $('.preview').attr('src', e.target.result);
+
+                }
+                reader.readAsDataURL(this.files[0]);
+
+            }
+        })
+
+    });
+</script>
 @endsection

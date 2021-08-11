@@ -38,7 +38,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         // Validate on all data coming from usres
         $this->validate($request, [
             'name' => ['required', 'string'],
@@ -78,11 +77,22 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
-        // Validate on all data coming from usres
-        $this->validate($request, [
-            'name', 'email', 'password', 'is_admin'
+
+        $user = User::find($id);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
         ]);
+
+        // if request has password and password not null 
+        if ($request->has('password') && $request->password != null) {
+            $user->update([
+                'password' => Hash::make($request->password),
+            ]);
+        }
+
+
+        return redirect()->route('users.index');
     }
 
     /**

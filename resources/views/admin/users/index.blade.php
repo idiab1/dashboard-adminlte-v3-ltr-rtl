@@ -34,7 +34,17 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">List of all users</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="card-title">List of all users</h3>
+                            </div>
+                            <div class="col-md-6">
+                                <a class="btn btn-create btn-primary float-sm-right" href="{{route('user.create')}}">
+                                    <i class="fasfa-plus"></i>
+                                    Add New User
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -61,22 +71,22 @@
                                             <td>{{$user->email}}</td>
                                             <td>
                                                 @if ($user->is_admin == 1)
-                                                    <button class="btn btn-outline-dark" type="submit">Admin</button>
+                                                    <button class="btn btn-sm btn-outline-dark" type="submit">Admin</button>
                                                     <form class="d-inline-block" action="{{route('remove.admin', ['id' => $user->id])}}" method="post">
                                                         @csrf
                                                         @method('PUT')
-                                                        <button class="btn btn-link" type="submit">Remove admin</button>
+                                                        <button class="btn btn-sm btn-link" type="submit">Remove admin</button>
                                                     </form>
                                                 @else
                                                     <form action="{{route('make.admin', ['id' => $user->id])}}" method="post">
                                                         @csrf
                                                         @method('PUT')
-                                                        <button class="btn btn-outline-dark" type="submit">Make Admin</button>
+                                                        <button class="btn btn-sm btn-outline-dark" type="submit">Make Admin</button>
                                                     </form>
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-success btn-edit" href="{{route('user.edit', ['id' => $user->id])}}">
+                                                <a class="btn btn-success btn-sm btn-edit" href="{{route('user.edit', ['id' => $user->id])}}">
                                                     <i class="fas fa-edit"></i>
                                                     Edit
                                                 </a>
@@ -85,7 +95,7 @@
                                                 <form action="{{route('user.destroy', ['id' => $user->id])}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="btn btn-danger btn-delete" type="submit">
+                                                    <button class="btn btn-danger btn-sm btn-delete" type="submit">
                                                         <i class="fas fa-trash"></i>
                                                         Delete
                                                     </button>

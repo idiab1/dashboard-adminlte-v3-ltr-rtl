@@ -31,17 +31,9 @@
                     </div>
                     <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('user.store')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('user.store')}}" method="POST">
                             @csrf
                             <div class="card-body">
-
-                                <div class="form-group">
-                                    <div class="image-preview text-center mb-3">
-                                        <img class="img-circle preview border border-dark" width="60px" src="{{asset('uploads/users/avatar.png')}}" alt="User Image">
-                                    </div>
-                                    <input class="form-control avatar" type="file" id="avatar" name="avatar">
-                                </div>
-
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input class="form-control" type="text" id="name" name="name" placeholder="Enter name of user">
@@ -58,6 +50,7 @@
                                     <label for="confirmPassword">Confirm Password</label>
                                     <input class="form-control" type="password" id="confirmPassword" name="password_confirmation" placeholder="Confirm password of user">
                                 </div>
+
 
                             </div>
                             <!-- /.card-body -->
@@ -80,7 +73,7 @@
     $(document).ready(function(){
 
         // Image Preview
-        $('.avatar').change(function(){
+        $('.image').change(function(){
             if(this.files && this.files[0]){
 
                 let reader = new FileReader();

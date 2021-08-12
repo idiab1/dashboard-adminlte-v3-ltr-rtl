@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class UserController extends Controller
 {
@@ -38,6 +39,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         // Validate on all data coming from usres
         $this->validate($request, [
             'name' => ['required', 'string'],
@@ -84,7 +86,7 @@ class UserController extends Controller
             'email' => $request->email,
         ]);
 
-        // if request has password and password not null 
+        // if request has password and password not null
         if ($request->has('password') && $request->password != null) {
             $user->update([
                 'password' => Hash::make($request->password),

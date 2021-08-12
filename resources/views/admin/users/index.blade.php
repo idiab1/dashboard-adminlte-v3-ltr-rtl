@@ -53,7 +53,6 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Avatar</th>
                                     <th>Email</th>
                                     <th>Admin / User</th>
                                     <th>Edit</th>
@@ -69,9 +68,6 @@
                                         <tr>
                                             <td>{{$id++}}</td>
                                             <td>{{$user->name}}</td>
-                                            <td>
-                                                <img class="elevation-2" width="40px" src="{{asset("uploads/users/". $user->avatar)}}" alt="User Image">
-                                            </td>
                                             <td>{{$user->email}}</td>
                                             <td>
                                                 @if ($user->is_admin == 1)
@@ -113,7 +109,6 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Avatar</th>
                                     <th>Email</th>
                                     <th>Admin / User</th>
                                     <th>Edit</th>

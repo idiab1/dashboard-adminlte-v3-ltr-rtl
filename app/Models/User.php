@@ -21,7 +21,6 @@ class User extends Authenticatable
         'email',
         'password',
         'is_admin',
-        'avatar',
     ];
 
     /**
@@ -42,12 +41,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    /**
-     * Get avatar path attribute
-     */
-    public function getAvatarPathAttribute()
-    {
-        return asset('uploads/users/' . $this->avatar);
-    }
 }

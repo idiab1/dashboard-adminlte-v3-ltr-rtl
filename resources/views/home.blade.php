@@ -1,4 +1,8 @@
 @extends('layouts.app')
+{{-- Title for page --}}
+@section('title')
+    Home
+@endsection
 
 @section('content')
 <div class="container">

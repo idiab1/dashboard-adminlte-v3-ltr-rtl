@@ -1,3 +1,12 @@
 body{
     direction: rtl;
 }
+
+
+/* Form  */
+[type=email], [type=file], [type=number], [type=password], [type=tel], [type=url], code, samp, var {
+    text-align: right;
+    direction: rtl;
+}
+
+/* End of Form */

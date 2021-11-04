@@ -17,35 +17,44 @@ use App\Http\Controllers\Admin\UserController;
 |
 */
 
-Route::prefix('admin')->middleware('is_admin')->group(function () {
 
-    // -> Route for admin page home
-    Route::get('/home', [HomeController::class, 'adminHome'])->name('admin.home');
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){
 
-    // User Routes
-    Route::resource('users', UserController::class)->except([
-        'show'
-    ])->parameters([
-        'users' => 'id',
-    ])->names([
-        'index'     => 'users.index',
-        'create'    => 'user.create',
-        'store'     => 'user.store',
-        'edit'      => 'user.edit',
-        'update'    => 'user.update',
-        'destroy'   => 'user.destroy',
-    ]);
-    Route::put('/users/{id}/makeAdmin', [UserController::class, 'makeAdmin'])->name('make.admin');
-    Route::put('/users/{id}/removeAdmin', [UserController::class, 'removeAdmin'])->name('remove.admin');
+    Route::prefix('admin')->middleware('is_admin')->group(function () {
+
+        // -> Route for admin page home
+        Route::get('/home', [HomeController::class, 'adminHome'])->name('admin.home');
+
+        // User Routes
+        Route::resource('users', UserController::class)->except([
+            'show'
+        ])->parameters([
+            'users' => 'id',
+        ])->names([
+            'index'     => 'users.index',
+            'create'    => 'user.create',
+            'store'     => 'user.store',
+            'edit'      => 'user.edit',
+            'update'    => 'user.update',
+            'destroy'   => 'user.destroy',
+        ]);
+        Route::put('/users/{id}/makeAdmin', [UserController::class, 'makeAdmin'])->name('make.admin');
+        Route::put('/users/{id}/removeAdmin', [UserController::class, 'removeAdmin'])->name('remove.admin');
 
 
-    // -> Route for setting
-    Route::resource('setting', SettingController::class)->only([
-        'edit', 'update',
-    ])->parameters([
-        'setting' => 'id'
-    ])->names([
-        'edit'      => 'setting.edit',
-        'update'    => 'setting.update',
-    ]);
+        // -> Route for setting
+        Route::resource('setting', SettingController::class)->only([
+            'edit', 'update',
+        ])->parameters([
+            'setting' => 'id'
+        ])->names([
+            'edit'      => 'setting.edit',
+            'update'    => 'setting.update',
+        ]);
+    });
 });
+

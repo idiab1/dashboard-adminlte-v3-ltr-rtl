@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,8 +14,20 @@
     {{-- other styles --}}
     @yield('styles')
 
-    {{-- RTL: style --}}
-    <link rel="stylesheet" href="{{asset('admin/css/adminlte-rlt.css')}}">
+    @if (app()->getLocale() == 'ar')
+    <!-- RTL: style -->
+        <link rel="stylesheet" href="{{asset('admin/css/bootstrap-rtl.min.css')}}">
+        <link rel="stylesheet" href="{{asset('admin/css/adminlte-rtl.css')}}">
+        <link rel="stylesheet" href="{{asset('admin/css/media-query-rtl.css')}}">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo:400,700" >
+
+        <style>
+            body, h1, h2, h3, h4, h5, h6 {
+                font-family: 'Cairo', sans-serif !important;
+            }
+        </style>
+    @endif
 
 
 </head>

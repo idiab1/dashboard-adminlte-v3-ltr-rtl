@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="{{asset('admin/css/adminlte.min.css')}}">
     {{-- other styles --}}
     @yield('styles')
+
+    {{-- RTL: style --}}
+    <link rel="stylesheet" href="{{asset('admin/css/adminlte-rlt.css')}}">
+
+
 </head>
 <body class="hold-transition sidebar-mini">
 

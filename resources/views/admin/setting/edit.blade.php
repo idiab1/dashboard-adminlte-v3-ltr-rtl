@@ -11,11 +11,8 @@
 @endsection
 
 {{-- Breadcrumb --}}
-@section('breadcrumb')
-    <ol class="breadcrumb float-sm-right">
-        <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Dashboard</a></li>
-        <li class="breadcrumb-item">Setting<li>
-    </ol>
+@section('breadcrumb-item')
+    <li class="breadcrumb-item">Setting<li>
 @endsection
 
 {{-- Content --}}

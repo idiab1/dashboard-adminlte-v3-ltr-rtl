@@ -10,13 +10,6 @@
     Control Panel
 @endsection
 
-{{-- Breadcrumb --}}
-@section('breadcrumb')
-    <ol class="breadcrumb float-sm-right">
-        <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Dashboard</a></li>
-    </ol>
-@endsection
-
 {{-- Content --}}
 @section('content')
 

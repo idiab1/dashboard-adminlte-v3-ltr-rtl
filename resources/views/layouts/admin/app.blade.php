@@ -52,7 +52,10 @@
                         <h1>@yield('page_name')</h1>
                     </div>
                     <div class="col-sm-6">
-                        @yield('breadcrumb')
+                        <ol class="breadcrumb {{app()->getLocale() == 'ar' ? "float-sm-left" : "float-sm-right"}}">
+                            <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Dashboard</a></li>
+                            @yield('breadcrumb-item')
+                        </ol>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
